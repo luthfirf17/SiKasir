@@ -1,0 +1,1 @@
+export { SystemConfig } from './index';

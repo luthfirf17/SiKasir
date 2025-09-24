@@ -1,0 +1,346 @@
+/**
+ * MenuPage.module.css
+ * 
+ * Custom styles untuk halaman Menu Management
+ * Menyediakan styling tambahan yang tidak tersedia di Material-UI
+ */
+
+/* ===================== ANIMATIONS ===================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ===================== MENU CARD ENHANCEMENTS ===================== */
+
+.menuCard {
+  animation: fadeInUp 0.5s ease-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menuCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.menuCardImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.menuCardImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.menuCard:hover .menuCardImage::before {
+  transform: translateX(100%);
+}
+
+/* ===================== LOADING STATES ===================== */
+
+.skeletonLoader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.loadingCard {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ===================== FORM ENHANCEMENTS ===================== */
+
+.formContainer {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.imageUploadArea {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.imageUploadArea:hover {
+  background-color: #f0f8ff;
+  border-color: #2196f3;
+}
+
+.imagePreview {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.imagePreview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================== RESPONSIVE DESIGN ===================== */
+
+@media (max-width: 768px) {
+  .menuCard {
+    margin-bottom: 16px;
+  }
+  
+  .searchFilterBar {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .searchFilterBar > * {
+    width: 100%;
+  }
+  
+  .statsChips {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerSection {
+    text-align: center;
+  }
+  
+  .menuGrid {
+    padding: 0 8px;
+  }
+  
+  .dialogContent {
+    padding: 16px;
+  }
+  
+  .formGrid {
+    gap: 16px;
+  }
+}
+
+/* ===================== ACCESSIBILITY ENHANCEMENTS ===================== */
+
+.focusOutline:focus {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+.highContrast {
+  filter: contrast(1.2);
+}
+
+/* Reduced motion untuk users yang prefer-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .menuCard,
+  .fadeInUp,
+  .imageUploadArea,
+  .imagePreview {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ===================== PRINT STYLES ===================== */
+
+@media print {
+  .fab,
+  .dialogActions,
+  .menuCardActions,
+  .searchFilterBar {
+    display: none !important;
+  }
+  
+  .menuCard {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .menuGrid {
+    display: block;
+  }
+  
+  .menuCard {
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+}
+
+/* ===================== DARK MODE SUPPORT ===================== */
+
+@media (prefers-color-scheme: dark) {
+  .menuCard {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  
+  .searchFilterBar {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
+  }
+  
+  .imageUploadArea {
+    background-color: #2d2d2d;
+    border-color: #404040;
+  }
+  
+  .imageUploadArea:hover {
+    background-color: #333333;
+    border-color: #2196f3;
+  }
+}
+
+/* ===================== CUSTOM SCROLLBAR ===================== */
+
+.dialogContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dialogContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.dialogContent::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.dialogContent::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* ===================== UTILITY CLASSES ===================== */
+
+.textTruncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textTruncateMultiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.gradientText {
+  background: linear-gradient(45deg, #2196f3, #21cbf3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadowHover {
+  transition: box-shadow 0.3s ease;
+}
+
+.shadowHover:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ===================== FLOATING ELEMENTS ===================== */
+
+.floatingAddButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+.floatingAddButton:hover {
+  animation: none;
+  transform: scale(1.1);
+}
+
+/* ===================== STATUS INDICATORS ===================== */
+
+.statusAvailable {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.statusUnavailable {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.pulseBadge {
+  animation: pulse 2s infinite;
+}
+
+/* ===================== DRAG AND DROP STYLES ===================== */
+
+.dragOverlay {
+  position: relative;
+}
+
+.dragOverlay::after {
+  content: 'Lepas gambar di sini';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(33, 150, 243, 0.9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.dragOverlay.dragActive::after {
+  opacity: 1;
+}
