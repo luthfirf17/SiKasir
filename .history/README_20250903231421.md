@@ -1,0 +1,334 @@
+# KasirKu - Modern Restaurant Point of Sale System
+
+Aplikasi Kasir Modern untuk Restoran/Kafe Mewah dengan arsitektur microservices menggunakan teknologi stack terkini.
+
+## 🚀 Teknologi Stack
+
+### Frontend
+- **Web (Admin, Kasir, Owner)**: React.js + TypeScript + Material-UI
+- **Mobile/Tablet (Waiters, Customer)**: React.js + TypeScript + Material-UI
+- **Kitchen Display System**: React.js + TypeScript + Material-UI
+
+### Backend
+- **Runtime**: Node.js v18+
+- **Framework**: Express.js + TypeScript
+- **Architecture**: Microservices
+- **Authentication**: JWT + OAuth2
+- **API**: RESTful + GraphQL (untuk kompleks query)
+- **Database**: PostgreSQL dengan TypeORM
+- **Cache**: Redis
+- **Real-time**: Socket.IO
+
+## 🎯 Fitur Utama
+
+### Panel Admin
+- ✅ **Login System** - Autentikasi dengan JWT dan role-based access control
+- ✅ **Dashboard** - Statistik real-time, monitoring sistem, aktivitas terbaru
+- ✅ **User Management** - CRUD pengguna dengan role management (Admin, Kasir, Waiters, Kitchen, Owner)
+- 🚧 **Menu Management** - Manajemen item menu, kategori, harga, gambar
+- 🚧 **Table Management** - Manajemen meja, kapasitas, status, reservasi
+- 🚧 **System Configuration** - Konfigurasi pajak, diskon, metode pembayaran, jam operasional
+- 🚧 **Reports & Analytics** - Laporan penjualan, performa, analitik bisnis
+
+### Fitur Khusus
+- **Role-based Access Control (RBAC)** - Sistem izin berdasarkan peran pengguna
+- **Real-time System Monitoring** - Monitoring performa server, memori, storage
+- **Multi-language Support** - Dukungan berbagai bahasa
+- **Responsive Design** - Optimal di desktop, tablet, dan mobile
+- **Real-time Notifications** - Notifikasi real-time menggunakan Socket.IO
+
+## 📱 Alur Penggunaan
+
+### Admin Panel
+1. **Login** ke dashboard admin
+2. **Manajemen Pengguna** - CRUD: Admin, Kasir, Waiters, Kitchen, Owner
+3. **Manajemen Menu** - Tambah/edit/hapus item menu, kategori, harga, gambar
+4. **Manajemen Meja** - Tambah/edit/hapus meja, kapasitas, status
+5. **Konfigurasi Sistem** - Pajak, diskon, metode pembayaran, jam operasional
+6. **Monitoring Sistem** - Log aktivitas, performa, notifikasi error
+7. **Generate Laporan** - Penggunaan, error, performance
+
+## 🛠️ Instalasi & Setup
+
+### Prerequisites
+- Node.js v18 atau lebih tinggi
+- PostgreSQL 13+
+- Redis 6+
+- npm atau yarn
+
+### 1. Clone Repository
+```bash
+git clone <repository-url>
+cd kasir-modern
+```
+
+### 2. Setup Backend
+
+```bash
+cd backend
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env
+
+# Edit .env file dengan konfigurasi database dan environment Anda
+nano .env
+
+# Setup database (pastikan PostgreSQL sudah running)
+npm run migration:run
+
+# Seed initial data
+npm run seed
+
+# Start development server
+npm run dev
+```
+
+### 3. Setup Frontend
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+### 4. Setup Database
+
+Pastikan PostgreSQL dan Redis sudah running, kemudian update file `.env` di backend:
+
+```env
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=kasirku_user
+DB_PASSWORD=kasirku_password
+DB_DATABASE=kasirku_db
+
+# Redis Configuration
+REDIS_HOST=localhost
+REDIS_PORT=6379
+```
+
+## 🏗️ Struktur Proyek
+
+```
+kasir-modern/
+├── frontend/                 # React.js Frontend
+│   ├── src/
+│   │   ├── components/      # Reusable components
+│   │   ├── pages/          # Page components
+│   │   ├── store/          # Redux store & slices
+│   │   ├── services/       # API services
+│   │   ├── types/          # TypeScript types
+│   │   ├── utils/          # Utility functions
+│   │   └── theme/          # Material-UI theme
+│   └── public/
+├── backend/                  # Node.js Backend
+│   ├── src/
+│   │   ├── config/         # Configuration files
+│   │   ├── controllers/    # Route controllers
+│   │   ├── models/         # Database models
+│   │   ├── routes/         # API routes
+│   │   ├── services/       # Business logic
+│   │   ├── middlewares/    # Express middlewares
+│   │   ├── types/          # TypeScript types
+│   │   └── utils/          # Utility functions
+│   └── dist/               # Compiled JavaScript
+└── README.md
+```
+
+## 🔐 Autentikasi & Otorisasi
+
+### User Roles
+- **Admin**: Full access ke semua fitur sistem
+- **Owner/Manajer**: Akses ke analitik, laporan, konfigurasi
+- **Kasir**: Akses ke transaksi, pembayaran, laporan kasir
+- **Waiter**: Akses ke pengambilan pesanan, status meja
+- **Kitchen**: Akses ke kitchen display, status pesanan
+- **Customer**: Akses ke pemesanan menu, pembayaran
+
+### Authentication Flow
+1. User login dengan username/password
+2. Server validasi kredensial dan generate JWT token
+3. Client menyimpan token dan mengirim di setiap request
+4. Server validasi token dan authorize berdasarkan role
+5. Auto-refresh token sebelum expired
+
+## 📊 API Endpoints
+
+### Authentication
+- `POST /api/v1/auth/login` - User login
+- `POST /api/v1/auth/logout` - User logout
+- `POST /api/v1/auth/refresh` - Refresh token
+- `GET /api/v1/auth/me` - Get current user
+
+### Users Management
+- `GET /api/v1/users` - Get all users
+- `POST /api/v1/users` - Create new user
+- `GET /api/v1/users/:id` - Get user by ID
+- `PUT /api/v1/users/:id` - Update user
+- `DELETE /api/v1/users/:id` - Delete user
+
+### Menu Management
+- `GET /api/v1/menu/categories` - Get menu categories
+- `GET /api/v1/menu/items` - Get menu items
+- `POST /api/v1/menu/items` - Create menu item
+- `PUT /api/v1/menu/items/:id` - Update menu item
+- `DELETE /api/v1/menu/items/:id` - Delete menu item
+
+### Table Management
+- `GET /api/v1/tables` - Get all tables
+- `POST /api/v1/tables` - Create table
+- `PUT /api/v1/tables/:id` - Update table
+- `DELETE /api/v1/tables/:id` - Delete table
+
+## 🔧 Environment Variables
+
+### Backend (.env)
+```env
+NODE_ENV=development
+PORT=5000
+
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=kasirku_user
+DB_PASSWORD=kasirku_password
+DB_DATABASE=kasirku_db
+
+# JWT
+JWT_SECRET=your-super-secret-jwt-key
+JWT_REFRESH_SECRET=your-refresh-secret-key
+JWT_EXPIRES_IN=1d
+JWT_REFRESH_EXPIRES_IN=7d
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+# Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-password
+```
+
+### Frontend (.env)
+```env
+REACT_APP_API_URL=http://localhost:5000/api/v1
+REACT_APP_APP_NAME=KasirKu
+```
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+cd backend
+npm test                 # Run all tests
+npm run test:watch      # Run tests in watch mode
+npm run test:coverage   # Run tests with coverage
+```
+
+### Frontend Tests
+```bash
+cd frontend
+npm test                # Run all tests
+npm run test:coverage  # Run tests with coverage
+```
+
+## 📦 Deployment
+
+### Production Build
+
+#### Backend
+```bash
+cd backend
+npm run build          # Compile TypeScript
+npm start             # Start production server
+```
+
+#### Frontend
+```bash
+cd frontend
+npm run build         # Create production build
+```
+
+### Docker Deployment
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+```
+
+## 🎨 Design System
+
+Aplikasi menggunakan Material-UI dengan custom theme yang konsisten:
+
+- **Primary Color**: Blue (#1976d2)
+- **Secondary Color**: Pink (#dc004e)
+- **Typography**: Roboto font family
+- **Spacing**: 8px base unit
+- **Border Radius**: 8px untuk komponen, 12px untuk cards
+
+## 🚧 Roadmap
+
+### Phase 1 - Admin Panel (Current)
+- ✅ Authentication & Authorization
+- ✅ User Management
+- ✅ Dashboard dengan real-time stats
+- 🚧 Menu Management
+- 🚧 Table Management
+- 🚧 System Configuration
+
+### Phase 2 - POS System
+- Order Management
+- Payment Processing
+- Receipt Generation
+- Inventory Tracking
+
+### Phase 3 - Advanced Features
+- Kitchen Display System
+- Waiter Mobile App
+- Customer Ordering App
+- Analytics & Reporting
+
+### Phase 4 - Integrations
+- Payment Gateway Integration
+- Email/SMS Notifications
+- Third-party Delivery Services
+- Loyalty Program
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- **Backend Developer**: Node.js + TypeScript + PostgreSQL
+- **Frontend Developer**: React.js + TypeScript + Material-UI
+- **UI/UX Designer**: Modern restaurant POS interface
+- **DevOps Engineer**: Docker + CI/CD + Cloud deployment
+
+## 📞 Support
+
+Untuk support dan pertanyaan:
+- Email: support@kasirku.com
+- Documentation: [docs.kasirku.com]
+- Issues: [GitHub Issues]
+
+---
+
+**KasirKu** - Modernizing Restaurant Operations with Technology 🍽️✨
