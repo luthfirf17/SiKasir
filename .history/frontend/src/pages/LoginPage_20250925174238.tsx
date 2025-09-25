@@ -204,14 +204,11 @@ const LoginPage = () => {
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
                   <div className="relative">
-                              <div className="relative">
-            <h1 className="text-3xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                SiKasir
-              </span>
-            </h1>
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
-          </div>
+                    <h1 className="text-3xl lg:text-4xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700">
+                      <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+                        SiKasir
+                      </span>
+                    </h1>
                     <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
                   </div>
                 </div>

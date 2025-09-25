@@ -19,35 +19,35 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [focusedField, setFocusedField] = useState('');
 
-    // ========== USER ROLES DEFINITION ==========
+  // ========== USER ROLES DEFINITION ==========
   const userRoles = [
     {
       value: 'admin',
       label: 'Admin',
       description: 'Akses penuh ke semua fitur sistem',
       icon: Shield,
-      color: 'from-purple-500/60 to-blue-500/60'
+      color: 'from-purple-600 to-blue-600'
     },
     {
       value: 'owner',
       label: 'Owner/Manajer',
       description: 'Manajemen restoran dan laporan',
       icon: Building2,
-      color: 'from-emerald-500/60 to-teal-500/60'
+      color: 'from-emerald-600 to-teal-600'
     },
     {
       value: 'kasir',
       label: 'Kasir',
       description: 'Point of Sale dan transaksi',
       icon: CreditCard,
-      color: 'from-orange-500/60 to-red-500/60'
+      color: 'from-orange-600 to-red-600'
     },
     {
       value: 'kitchen',
       label: 'Kitchen',
       description: 'Manajemen pesanan dan dapur',
       icon: Wallet,
-      color: 'from-indigo-500/60 to-purple-500/60'
+      color: 'from-indigo-600 to-purple-600'
     },
   ];
 
@@ -199,23 +199,15 @@ const LoginPage = () => {
             {/* Left Side - Branding & Features */}
             <div className="space-y-8">
               <div className="text-center lg:text-left">
-                <div className="flex flex-col justify-center items-center gap-2 mb-6">
+                <div className="flex justify-center lg:justify-start mb-6">
                   <div className="p-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
-                    <TrendingUp className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="relative">
-                              <div className="relative">
-            <h1 className="text-3xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                SiKasir
-              </span>
-            </h1>
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
-          </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
+                    <TrendingUp className="h-10 w-10 text-white" />
                   </div>
                 </div>
-                <p className="text-slate-300 text-lg mb-8 text-center">
+                <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+                  SiKasir <span className="text-emerald-400">Financial</span>
+                </h1>
+                <p className="text-slate-300 text-lg mb-8">
                   Modern Restaurant Financial System
                 </p>
               </div>
@@ -228,7 +220,10 @@ const LoginPage = () => {
                   { icon: TrendingUp, label: 'Analytics', desc: 'Real-time insights' },
                   { icon: CreditCard, label: 'POS System', desc: 'Modern point of sale' }
                 ].map(({ icon: Icon, label, desc }, index) => (
-                  <div className="p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                  <div
+                    key={index}
+                    className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+                  >
                     <Icon className="h-8 w-8 text-emerald-400 mb-2 group-hover:scale-110 transition-transform" />
                     <h3 className="text-white font-semibold text-sm mb-1">{label}</h3>
                     <p className="text-slate-400 text-xs">{desc}</p>
@@ -237,7 +232,6 @@ const LoginPage = () => {
               </div>
 
               {/* Demo Credentials - Desktop */}
-              {/*
               <div className="bg-white/5 rounded-xl p-6 border border-white/10">
                 <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                   <Zap className="h-5 w-5 text-yellow-400" />
@@ -269,7 +263,6 @@ const LoginPage = () => {
                   ))}
                 </div>
               </div>
-              */}
             </div>
 
             {/* Right Side - Login Form */}
@@ -289,18 +282,15 @@ const LoginPage = () => {
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400"></div>
 
         <div className="text-center mb-6">
-          <div className="flex flex-col justify-center items-center gap-2 mb-4">
+          <div className="flex justify-center mb-4">
             <div className="p-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
               <TrendingUp className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-3xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700 relative">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                SiKasir
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm"></div>
-            </h1>
           </div>
-          <p className="text-slate-300 text-sm text-center">
+          <h1 className="text-3xl font-bold text-white mb-2">
+            SiKasir <span className="text-emerald-400">Financial</span>
+          </h1>
+          <p className="text-slate-300 text-sm">
             Modern Restaurant Financial System
           </p>
         </div>
@@ -308,7 +298,6 @@ const LoginPage = () => {
         {renderLoginForm()}
 
         <div className="mt-6 pt-6 border-t border-white/10">
-          {/*
           <div className="text-center mb-4">
             <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center justify-center gap-2">
               <Zap className="h-4 w-4 text-yellow-400" />
@@ -340,7 +329,6 @@ const LoginPage = () => {
               ))}
             </div>
           </div>
-          */}
         </div>
 
         <div className="absolute -top-6 -right-6 opacity-10">

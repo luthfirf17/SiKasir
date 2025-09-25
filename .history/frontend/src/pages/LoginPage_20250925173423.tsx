@@ -203,19 +203,11 @@ const LoginPage = () => {
                   <div className="p-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
-                  <div className="relative">
-                              <div className="relative">
-            <h1 className="text-3xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                SiKasir
-              </span>
-            </h1>
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
-          </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm pointer-events-none"></div>
-                  </div>
+                  <h1 className="text-3xl lg:text-4xl font-bold text-white text-center">
+                    SiKasir <span className="text-emerald-400">Financial</span>
+                  </h1>
                 </div>
-                <p className="text-slate-300 text-lg mb-8 text-center">
+                <p className="text-slate-300 text-lg mb-8">
                   Modern Restaurant Financial System
                 </p>
               </div>
@@ -293,14 +285,11 @@ const LoginPage = () => {
             <div className="p-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl shadow-lg transform hover:scale-110 transition-transform duration-300">
               <TrendingUp className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-3xl font-black text-center text-white drop-shadow-2xl tracking-wider hover:text-slate-50 transition-all duration-700 relative">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                SiKasir
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-200/10 via-transparent to-amber-200/10 opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm"></div>
+            <h1 className="text-3xl font-bold text-white text-center">
+              SiKasir <span className="text-emerald-400">Financial</span>
             </h1>
           </div>
-          <p className="text-slate-300 text-sm text-center">
+          <p className="text-slate-300 text-sm">
             Modern Restaurant Financial System
           </p>
         </div>
