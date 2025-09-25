@@ -68,6 +68,7 @@
   "homepage": "https://github.com/your-org/kasir-modern#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
+    "bcryptjs": "^3.0.2",
     "formik": "^2.4.6",
     "lucide-react": "^0.544.0",
     "node-fetch": "^2.6.7",
